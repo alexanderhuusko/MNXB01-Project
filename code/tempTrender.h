@@ -8,7 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
-
+#include <stdlib.h>
 	
 using namespace std; 
 
@@ -34,24 +34,25 @@ class tempTrender {
 			getline(dataFile, stringDummy);
 			//dataFile.ignore(1000, "\n");
 		}
-		
-			/*
-			dataFile >> year >> stringDummy >> month >> stringDummy >> day 
-			>> stringDummy >> hour >> stringDummy >> intDummy >>
-			stringDummy >> intDummy >> stringDummy >> temperatureDummy >> stringDummy;
-			*/
 			string segment;
 			
 			while(getline(dataFile, segment))
 			{
 				vector<string> stringSeparationVector;
+				vector<string> dateDummy;
+				vector<string> hourDummy;
 				split(segment, stringSeparationVector, ';');
-				cout << segment << endl;
-				cout << stringSeparationVector.at(0) << endl;
-				cout << stringSeparationVector.at(1) << endl;
-				cout << stringSeparationVector.at(2) << endl;
-				temperature.push_back(stringSeparationVector.at(2));
+				//Splits the date yyyy-mm-dd into three vectors (year, month, day) with yyyy, mm, dd
+				split(stringSeparationVector.at(0), dateDummy,'-');
+				year.push_back(strtof(dateDummy.at(0).c_str(), 0));
+				month.push_back(strtof(dateDummy.at(1).c_str(), 0));
+				day.push_back(strtof(dateDummy.at(2).c_str(), 0));
 				
+				split(stringSeparationVector.at(1), hourDummy,'-');
+				hour.push_back(strtof(hourDummy.at(0).c_str(), 0));
+
+				
+				temperature.push_back(strtof(stringSeparationVector.at(2).c_str(), 0));
 			}
 			
 			//splitter(dataFile&, vectorYearMonthDayHour&, ";"); 
@@ -74,7 +75,10 @@ class tempTrender {
 	float temperatureDummy;
 	vector<float> temperature; //in celsius
 	vector<float> date; //in years
-	int year, month, day, hour;
+	vector<int> year;
+	vector<int> month;
+	vector<int> day;
+	vector<int> hour;
 	int maxDataPoints;
 	bool keepGoing;
 	int startingLine;
