@@ -65,7 +65,7 @@ class tempTrender {
 	int GetMonth(int dataPoint){return month.at(dataPoint);}
 	int GetDay(int dataPoint){return day.at(dataPoint);}
 	int GetHour(int dataPoint){return hour.at(dataPoint);}
-	int GetTemperature(int dataPoint){return temperature.at(dataPoint);}
+	float GetTemperature(int dataPoint){return temperature.at(dataPoint);}
 	
 	private:
 	
