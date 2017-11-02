@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <stdio.h>
 	
 using namespace std; 
 
@@ -27,23 +28,23 @@ class tempTrender {
 
 	}
 	double convertDateToYear(int i){
-		double tempDate = 0;
+		double tempDate = 0.0;
 		double normalYear = 365.0000000000; //days
 		double leapYear = 366.0000000000; //days
-		
+		double hourToDay = 24.0;
 		if((year.at(i) % 4 == 0) && (year.at(i) % 100 != 0)){
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
+			tempDate = hour.at(i) / (hourToDay * leapYear) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
 		}
 		else if(year.at(i) % 100 == 0){
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
+			tempDate = hour.at(i)/ (hourToDay * normalYear) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
 		}
 		else if(year.at(i) % 400 == 0){
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
+			tempDate = hour.at(i) / (hourToDay * leapYear) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
 		}
 		else{
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
+			tempDate = hour.at(i) / (hourToDay * normalYear) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
 		}
-		cout << tempDate << endl;
+		printf("%f\n", tempDate);
 		return tempDate;
 	}
 	void readDataFile(){
@@ -77,7 +78,6 @@ class tempTrender {
 			
 			//Creates year in decimal and stores in a vector
 			decimalYear.push_back(convertDateToYear(i));
-			cout << decimalYear.at(i) << endl;
 			i++;
 		}
 		
