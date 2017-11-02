@@ -2,7 +2,9 @@
 #include <string>
 
 using namespace std; 
-
+void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras, tempTrender& falsterbo, tempTrender& falun, tempTrender& lund, tempTrender& soderarm, tempTrender& umea, tempTrender& visby){
+	
+}
 void project() {
 	string dataPathLulea = "/home/courseuser/project/datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
@@ -50,17 +52,5 @@ void project() {
 	tempTrender visby(dataPathVisby, startingLineVisby);
 	visby.readDataFile();
 	
-	cout << lulea.GetYear(0) << endl;
-	cout << lulea.GetMonth(0) << endl;
-	cout << lulea.GetDay(30000)<< endl;
-	cout << lulea.GetHour(11000)<< endl;
-	cout << umea.GetTemperature(1000) << endl;
-	cout << visby.GetDate(150) << endl;
-	
-	cout << karlstad.GetYear(0) << endl;
-	cout << boras.GetMonth(0) << endl;
-	cout << falsterbo.GetDay(30000)<< endl;
-	cout << falun.GetHour(11000)<< endl;
-	cout << lund.GetTemperature(1000) << endl;
-	cout << soderarm.GetDate(150) << endl;
+	cityDeviation(lulea, karlstad, boras, falsterbo, falun, lund, soderarm, umea, visby);
 }

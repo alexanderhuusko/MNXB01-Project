@@ -82,6 +82,7 @@ class tempTrender {
 		dataFile.close();
 	}
 	
+	
 	int GetYear(int dataPoint){return year.at(dataPoint);}
 	int GetMonth(int dataPoint){return month.at(dataPoint);}
 	int GetDay(int dataPoint){return day.at(dataPoint);}
