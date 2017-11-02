@@ -4,6 +4,7 @@
 using namespace std; 
 
 void project() {
+
 	string dataPathLulea = "/home/courseuser/project/datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
 	string dataPathKarlstad = "/home/courseuser/project/datasets/smhi-opendata_Karlstad.csv";
