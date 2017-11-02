@@ -5,23 +5,23 @@ using namespace std;
 
 void project() {
 
-	string dataPathLulea = "/home/courseuser/project/datasets/smhi-opendata_Lulea.csv"; 
+	string dataPathLulea = "../datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
-	string dataPathKarlstad = "/home/courseuser/project/datasets/smhi-opendata_Karlstad.csv";
+	string dataPathKarlstad = "../datasets/smhi-opendata_Karlstad.csv";
 	int startingLineKarlstad = 12;
-	string dataPathBoras = "/home/courseuser/project/datasets/smhi-opendata_Boras.csv";
+	string dataPathBoras = "../datasets/smhi-opendata_Boras.csv";
 	int startingLineBoras = 11;
-	string dataPathFalsterbo = "/home/courseuser/project/datasets/smhi-opendata_Falsterbo.csv";
+	string dataPathFalsterbo = "../datasets/smhi-opendata_Falsterbo.csv";
 	int startingLineFalsterbo = 11;		
-	string dataPathFalun = "/home/courseuser/project/datasets/smhi-opendata_Falun.csv";
+	string dataPathFalun = "../datasets/smhi-opendata_Falun.csv";
 	int startingLineFalun = 13;				
-	string dataPathLund = "/home/courseuser/project/datasets/smhi-opendata_Lund.csv";
+	string dataPathLund = "../datasets/smhi-opendata_Lund.csv";
 	int startingLineLund = 13;
-	string dataPathSoderarm = "/home/courseuser/project/datasets/smhi-opendata_Soderarm.csv";
+	string dataPathSoderarm = "../datasets/smhi-opendata_Soderarm.csv";
 	int startingLineSoderarm = 12;
-	string dataPathUmea = "/home/courseuser/project/datasets/smhi-opendata_Umea.csv";
+	string dataPathUmea = "../datasets/smhi-opendata_Umea.csv";
 	int startingLineUmea = 13;
-	string dataPathVisby = "/home/courseuser/project/datasets/smhi-opendata_Visby.csv"; 
+	string dataPathVisby = "../datasets/smhi-opendata_Visby.csv"; 
 	int startingLineVisby = 11;
 	
 	tempTrender lulea(dataPathLulea, startingLineLulea);
