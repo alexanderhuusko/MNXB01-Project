@@ -67,7 +67,6 @@ class tempTrender {
 			year.push_back(strtof(dateDummy.at(0).c_str(), 0));
 			month.push_back(strtof(dateDummy.at(1).c_str(), 0));
 			day.push_back(strtof(dateDummy.at(2).c_str(), 0));
-			//cout << stringSeparationVector.at(2).c_str() << endl;
 			
 			//Splits the time hh:mm:ss into hh only vector (no minutes and seconds are recorded in files)
 			split(stringSeparationVector.at(1), hourDummy,'-');
