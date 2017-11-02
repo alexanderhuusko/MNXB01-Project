@@ -6,6 +6,7 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 	
 }
 void project() {
+
 	string dataPathLulea = "/home/courseuser/project/datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
 	string dataPathKarlstad = "/home/courseuser/project/datasets/smhi-opendata_Karlstad.csv";
