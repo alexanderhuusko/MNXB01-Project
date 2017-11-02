@@ -11,7 +11,7 @@ void project() {
 	//t.tempOnDay(8, 23); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
-	//t.hotCold();
+	t.hotCold();
 	//t.tempPerYear(2050);
 	cout<< tempy.GetYear(0) << endl;
 	cout<<tempy.GetMonth(0) << endl;
