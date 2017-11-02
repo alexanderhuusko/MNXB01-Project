@@ -30,18 +30,20 @@ class tempTrender {
 		double tempDate = 0;
 		double normalYear = 365.0000000000; //days
 		double leapYear = 366.0000000000; //days
+		double hourToDay = 24;
 		
 		if((year.at(i) % 4 == 0) && (year.at(i) % 100 != 0)){
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
+			tempDate = (double)hour.at(i)/(hourToDay * leapYear) + (double)day.at(i)/(double)leapYear + (double)month.at(i)/(double)12 + (double)year.at(i);
 		}
 		else if(year.at(i) % 100 == 0){
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
+			tempDate = (double)hour.at(i)/(hourToDay * normalYear) + (double)day.at(i)/(double)normalYear + (double)month.at(i)/(double)12 + (double)year.at(i);
 		}
 		else if(year.at(i) % 400 == 0){
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
+			tempDate = (double)hour.at(i)/(hourToDay * leapYear) + (double)day.at(i)/(double)leapYear + (double)month.at(i)/(double)12 + (double)year.at(i);
+
 		}
 		else{
-			tempDate = hour.at(i)*(0.000114079553) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
+			tempDate = (double)hour.at(i)/(hourToDay * normalYear) + (double)day.at(i)/(double)normalYear + (double)month.at(i)/(double)12 + (double)year.at(i);
 		}
 		cout << tempDate << endl;
 		return tempDate;

@@ -13,11 +13,13 @@ void project() {
 	//t.tempPerDay();
 	t.hotCold();
 	//t.tempPerYear(2050);
+	/*
 	cout<< tempy.GetYear(0) << endl;
 	cout<<tempy.GetMonth(0) << endl;
 	cout<<tempy.GetDay(30000)<< endl;
 	cout<<tempy.GetHour(11000)<< endl;
 	cout << tempy.GetTemperature(1000) << endl;
+	*/
 	cout << tempy.GetDate(0) << endl;
 	cout << tempy.GetDate(1) << endl;
 	cout << tempy.GetDate(150) << endl;
