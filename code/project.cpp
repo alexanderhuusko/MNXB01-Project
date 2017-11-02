@@ -8,6 +8,7 @@ void project() {
 	int iniStartingLine = 11;
 	tempTrender tempy(iniDataPath, iniStartingLine); //Instantiate your analysis object
 	tempy.readDataFile();
+	tempy.hotCold();
 	//t.tempOnDay(8, 23); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
@@ -20,7 +21,7 @@ void project() {
 	cout<<tempy.GetHour(11000)<< endl;
 	cout << tempy.GetTemperature(1000) << endl;
 	*/
-	cout << tempy.GetDate(0) << endl;
+	/*cout << tempy.GetDate(0) << endl;
 	cout << tempy.GetDate(1) << endl;
-	cout << tempy.GetDate(150) << endl;
+	cout << tempy.GetDate(150) << endl;*/
 }
