@@ -4,14 +4,14 @@
 using namespace std; 
 
 void project() {
-	string iniDataPath = "/home/courseuser/project/datasets/smhi-opendata_Lulea.csv"; //Put the path to your data file here
+	string iniDataPath = "/home/lucas/IntroProgramming/MNXB01-Project/datasets/smhi-opendata_Lulea.csv"; //Put the path to your data file here
 	int iniStartingLine = 11;
 	tempTrender tempy(iniDataPath, iniStartingLine); //Instantiate your analysis object
 	tempy.readDataFile();
 	//t.tempOnDay(8, 23); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
-	t.hotCold();
+	//t.hotCold();
 	//t.tempPerYear(2050);
 	/*
 	cout<< tempy.GetYear(0) << endl;
