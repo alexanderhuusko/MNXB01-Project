@@ -10,6 +10,12 @@
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
+
+#include <TF1.h> // 1d function class
+#include <TH1.h> // 1d histogram classes
+#include <TStyle.h>  // style object
+#include <TMath.h>   // math functions
+#include <TCanvas.h> // canvas object
 	
 using namespace std; 
 
@@ -45,8 +51,29 @@ class tempTrender {
 			tempDate = hour.at(i) / (hourToDay * normalYear) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
 		}
 		//printf("%f\n", tempDate);
+
 		return tempDate;
 	}
+	
+	int convertMonthToDays(int l) {
+		int monthDaysNormal[13] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
+		int monthDaysLeap[13] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335 };
+		
+		if((year.at(k) % 4 == 0) && (year.at(k) % 100 != 0)){
+			daysMonth = monthDaysLeap[l];
+		}
+		else if(year.at(k) % 100 == 0){
+			daysMonth = monthDaysNormal[l];
+		}
+		else if(year.at(k) % 400 == 0){
+			daysMonth = monthDaysLeap[l];
+		}
+		else{
+			daysMonth = monthDaysNormal[l];
+		}
+		return daysMonth;
+	}
+	
 	void readDataFile(){
 		ifstream dataFile(dataPath.c_str());
 		
@@ -90,43 +117,55 @@ class tempTrender {
 	float GetTemperature(int dataPoint){return temperature.at(dataPoint);}
 	double GetDate(int dataPoint){return decimalYear.at(dataPoint);}
 	
-	
 	void hotCold() {
-		/*//while (year.at(j) < 2015){
-			while (year.at(j) == year.at(j+1)) {
-				tempYear.push_back(temperature.at(j));
-				//cout << tempAllDays.at(j) << endl;
-				numberTemp++;
-				j++;
-					
-			}
-			hottestDay = max_element(tempYear.at(0), tempYear.at(i));
-			cout << "Largest: " << max_element(tempYear.at(0), tempYear.at(i));
-			cout << "År: " << h << endl;
-			h++;
-		}
-		//}	*/
 		int currentYear = year.at(0);
-		do {
-			if(temperature.at(k) > hottest){
+		float coldest = 100;
+		float hottest = 0;
+		
+		TH1D* hotHist = new TH1D("Hot", "Histogram of hottest days over all years; day; Counts", 
+			366, 0, 366);
+		TH1D* coldHist = new TH1D("Cold", "Histogram of coldest days over all years; day; Counts", 
+			366, 0, 366);
+		//TH1D* hotColdHist = new TH1D("hotCold", "Histogram of hottest and coldest days over all years; day; Counts", 
+		//	366, 0, 366);
+		
+		for (k = 0; (unsigned)k < (year.size() -1); k++) {
+			if (temperature.at(k) > hottest){
 				hottest = temperature.at(k);
 				hottestDay = day.at(k);
 				hottestMonth = month.at(k);
 			}
-			if(temperature.at(k) < coldest){
+			
+			if (temperature.at(k) < coldest){
 				coldest = temperature.at(k);
 				coldestDay = day.at(k);
-				coldestDay = month.at(k);
-				
-				cout << coldestDay << endl;
+				coldestMonth = month.at(k);
 			}
+			
 			if (currentYear != year.at(k+1)){
-				currentYear = year.at(k);
-				coldestDay = 100;
-				hottestDay = 0;
+				currentYear = year.at(k+1);
+				hotDays.push_back(convertMonthToDays(hottestMonth) + hottestDay);
+				coldDays.push_back(convertMonthToDays(coldestMonth) + coldestDay);
+				coldest = 100;
+				hottest = 0;
 			}
-			k++;
-		}while (year.at(k) < 2015 && month.at(k) < 9 && day.at(k) < 1 && hour.at(k) < 6);
+		}
+		
+		for (int j = 0; (unsigned)j < hotDays.size(); j++) {
+			hotHist->Fill(hotDays.at(j));
+			coldHist->Fill(coldDays.at(j));
+		}
+		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 900, 600); // Create canvas for plot
+		
+		hotHist->SetLineColor(2);
+		hotHist->SetFillColor(2);
+		hotHist->Draw(); // Draw the histogram containing hot days
+		
+		coldHist->SetLineColor(4);
+		coldHist->SetFillColor(4);
+		coldHist->Draw("SAME"); //Draw the histogram containing cold days in the same canvas as hot days
+		gPad->RedrawAxis(); // Redraw axis because it became same color as coldHist
+
 	}
 
 		
@@ -145,13 +184,14 @@ class tempTrender {
 	vector<int> hour;
 	int startingLine;
 	int i;
-	int k = 0;
-	float coldest = 100;
-	float hottest = 0;
-	int hottestDay = 0;
-	int hottestMonth = 0;
-	int coldestDay = 0;
-	int coldestMonth = 0;
+	int k;
+	int hottestDay;
+	int hottestMonth;
+	int coldestDay;
+	int coldestMonth;
+	vector<int> hotDays;
+	vector<int> coldDays;
+	int daysMonth;
 	
 	
 	//void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day

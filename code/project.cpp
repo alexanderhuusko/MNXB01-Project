@@ -5,11 +5,11 @@ using namespace std;
 
 void project() {
 
-	string iniDataPath = "/home/lucas/IntroProgramming/MNXB01-Project/datasets/smhi-opendata_Lulea.csv"; //Put the path to your data file here
-	int iniStartingLine = 11;
-	tempTrender tempy(iniDataPath, iniStartingLine); //Instantiate your analysis object
-	tempy.readDataFile();
-	tempy.hotCold();
+	//string iniDataPath = "/home/lucas/IntroProgramming/MNXB01-Project/datasets/smhi-opendata_Lulea.csv"; //Put the path to your data file here
+	//int iniStartingLine = 11;
+	//tempTrender tempy(iniDataPath, iniStartingLine); //Instantiate your analysis object
+	//tempy.readDataFile();
+	//tempy.hotCold();
 	//t.tempOnDay(8, 23); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
@@ -73,7 +73,9 @@ void project() {
 	tempTrender visby(dataPathVisby, startingLineVisby);
 	visby.readDataFile();
 	
-	cout << lulea.GetYear(0) << endl;
+	lund.hotCold();
+	
+	/*cout << lulea.GetYear(0) << endl;
 	cout << lulea.GetMonth(0) << endl;
 	cout << lulea.GetDay(30000)<< endl;
 	cout << lulea.GetHour(11000)<< endl;
@@ -85,6 +87,6 @@ void project() {
 	cout << falsterbo.GetDay(30000)<< endl;
 	cout << falun.GetHour(11000)<< endl;
 	cout << lund.GetTemperature(1000) << endl;
-	cout << soderarm.GetDate(150) << endl;
+	cout << soderarm.GetDate(150) << endl;*/
 
 }
