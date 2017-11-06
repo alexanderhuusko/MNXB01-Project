@@ -15,7 +15,7 @@ void project() {
 	int startingLineFalsterbo = 11;		
 	string dataPathFalun = "/home/courseuser/project/datasets/smhi-opendata_Falun.csv";
 	int startingLineFalun = 13;				
-	string dataPathLund = "/home/courseuser/project/datasets/smhi-opendata_Lund.csv";
+	string dataPathLund = "../datasets/smhi-opendata_Lund.csv";
 	int startingLineLund = 13;
 	string dataPathSoderarm = "/home/courseuser/project/datasets/smhi-opendata_Soderarm.csv";
 	int startingLineSoderarm = 12;
@@ -24,7 +24,7 @@ void project() {
 	string dataPathVisby = "/home/courseuser/project/datasets/smhi-opendata_Visby.csv"; 
 	int startingLineVisby = 11;
 	
-	tempTrender lulea(dataPathLulea, startingLineLulea);
+	/*tempTrender lulea(dataPathLulea, startingLineLulea);
 	lulea.readDataFile();
 	
 	tempTrender karlstad(dataPathKarlstad, startingLineKarlstad);
@@ -38,10 +38,10 @@ void project() {
 			
 	tempTrender falun(dataPathFalun, startingLineFalun);
 	falun.readDataFile();
-	
+	*/
 	tempTrender lund(dataPathLund, startingLineLund);
 	lund.readDataFile();
-	
+	/*
 	tempTrender soderarm(dataPathSoderarm, startingLineSoderarm);
 	soderarm.readDataFile();
 		
@@ -62,6 +62,8 @@ void project() {
 	cout << boras.GetMonth(0) << endl;
 	cout << falsterbo.GetDay(30000)<< endl;
 	cout << falun.GetHour(11000)<< endl;
+	*/
 	cout << lund.GetTemperature(1000) << endl;
-	cout << soderarm.GetDate(150) << endl;
+	//cout << soderarm.GetDate(150) << endl;
+	lund.tempPerDay();
 }
