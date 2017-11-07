@@ -4,7 +4,6 @@
 using namespace std; 
 
 void project() {
-
 	string dataPathLulea = "../datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
 	string dataPathKarlstad = "../datasets/smhi-opendata_Karlstad.csv";
@@ -51,17 +50,6 @@ void project() {
 	tempTrender visby(dataPathVisby, startingLineVisby);
 	visby.readDataFile();
 	
-	cout << lulea.GetYear(0) << endl;
-	cout << lulea.GetMonth(0) << endl;
-	cout << lulea.GetDay(30000)<< endl;
-	cout << lulea.GetHour(11000)<< endl;
-	cout << umea.GetTemperature(1000) << endl;
-	cout << visby.GetDate(150) << endl;
-	
-	cout << karlstad.GetYear(0) << endl;
-	cout << boras.GetMonth(0) << endl;
-	cout << falsterbo.GetDay(30000)<< endl;
-	cout << falun.GetHour(11000)<< endl;
-	cout << lund.GetTemperature(1000) << endl;
-	cout << soderarm.GetDate(150) << endl;
+	lund.hotCold();
+
 }
