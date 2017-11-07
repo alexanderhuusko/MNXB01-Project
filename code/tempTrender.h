@@ -89,6 +89,23 @@ class tempTrender {
 	float GetTemperature(int dataPoint){return temperature.at(dataPoint);}
 	double GetDate(int dataPoint){return decimalYear.at(dataPoint);}
 	
+	
+	void tempOnDay(int monthToCalculate, int dayToCalculate){
+		for (int y = 0; (unsigned)y < year.size(); y++){
+				if (month.at(y) == monthToCalculate){  
+						if (day.at(y) == dayToCalculate){
+							cout << year.at(y)<< " - "<< month.at(y)<< " - " << day.at(y)<< " - " << temperature.at(y) << endl;	
+							
+							
+								}						
+						}
+				}
+				
+		}
+		
+	
+
+	
 	private:
 	
 	string dataPath;

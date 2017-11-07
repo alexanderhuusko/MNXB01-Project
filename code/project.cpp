@@ -7,7 +7,7 @@ void project() {
 
 	string dataPathLulea = "../datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
-	string dataPathKarlstad = "../datasets/smhi-opendata_Karlstad.csv";
+	/*string dataPathKarlstad = "../datasets/smhi-opendata_Karlstad.csv";
 	int startingLineKarlstad = 12;
 	string dataPathBoras = "../datasets/smhi-opendata_Boras.csv";
 	int startingLineBoras = 11;
@@ -22,12 +22,12 @@ void project() {
 	string dataPathUmea = "../datasets/smhi-opendata_Umea.csv";
 	int startingLineUmea = 13;
 	string dataPathVisby = "../datasets/smhi-opendata_Visby.csv"; 
-	int startingLineVisby = 11;
+	int startingLineVisby = 11; */
 	
 	tempTrender lulea(dataPathLulea, startingLineLulea);
 	lulea.readDataFile();
 	
-	tempTrender karlstad(dataPathKarlstad, startingLineKarlstad);
+	/*tempTrender karlstad(dataPathKarlstad, startingLineKarlstad);
 	karlstad.readDataFile();
 
 	tempTrender boras(dataPathBoras, startingLineBoras);
@@ -49,9 +49,9 @@ void project() {
 	umea.readDataFile();
 	
 	tempTrender visby(dataPathVisby, startingLineVisby);
-	visby.readDataFile();
+	visby.readDataFile(); */
 	
-	cout << lulea.GetYear(0) << endl;
+	/*cout << lulea.GetYear(0) << endl;
 	cout << lulea.GetMonth(0) << endl;
 	cout << lulea.GetDay(30000)<< endl;
 	cout << lulea.GetHour(11000)<< endl;
@@ -63,5 +63,9 @@ void project() {
 	cout << falsterbo.GetDay(30000)<< endl;
 	cout << falun.GetHour(11000)<< endl;
 	cout << lund.GetTemperature(1000) << endl;
-	cout << soderarm.GetDate(150) << endl;
+	cout << soderarm.GetDate(150) << endl;*/ 
+	
+	lulea.tempOnDay(3,3);   
+	
+	
 }
