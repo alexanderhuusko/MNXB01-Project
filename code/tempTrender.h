@@ -55,11 +55,11 @@ class tempTrender {
 		return tempDate;
 	}
 	
-	int convertMonthToDays(int l) {
-		int monthDaysNormal[13] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
+	int convertMonthToDays(int l) { // function to calculate the number of days in the months before the given month
+		int monthDaysNormal[13] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 }; // arrays to store number of days
 		int monthDaysLeap[13] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335 };
 		
-		if((year.at(k) % 4 == 0) && (year.at(k) % 100 != 0)){
+		if((year.at(k) % 4 == 0) && (year.at(k) % 100 != 0)){ // leap year check
 			daysMonth = monthDaysLeap[l];
 		}
 		else if(year.at(k) % 100 == 0){
@@ -110,7 +110,6 @@ class tempTrender {
 		dataFile.close();
 	}
 	
-	int GetYear(int dataPoint){return year.at(dataPoint);}
 	int GetMonth(int dataPoint){return month.at(dataPoint);}
 	int GetDay(int dataPoint){return day.at(dataPoint);}
 	int GetHour(int dataPoint){return hour.at(dataPoint);}
@@ -131,9 +130,6 @@ class tempTrender {
 			
 		TH1D* coldHistLate = new TH1D("ColdLate", "Histogram of coldest days over all years; day; Counts", // Histogram for coldest days in the end of the year
 			366, 1, 367);
-			
-		/*TH1D* bothHist = new TH1D("HotCold", "Histogram of hottest and coldest days over all years; day; Counts", 
-			366, 1, 367);*/
 		
 		for (k = 0; (unsigned)k < (year.size()-1); k++) { 
 			if (temperature.at(k) > hottest){ // if the temperature of a given day is higher than the previously highest temperature it will update the variables
@@ -157,15 +153,14 @@ class tempTrender {
 				coldest = 100;
 				hottest = 0;
 				
-			} else if ( year.at(k) == year[year.size() - 2] && month.at(k) == month[month.size() - 2] && day.at(k) == day[day.size() - 2] ){ // loop which saves the variables for the last year
+			} else if ( year.at(k) == year[year.size() - 1] && month.at(k) == month[month.size() - 1] && day.at(k) == day[day.size() - 1] ){ // if statements which saves the variables for the last year
 				hotDays.push_back(convertMonthToDays(hottestMonth) + hottestDay);
 				coldDays.push_back(convertMonthToDays(coldestMonth) + coldestDay);
 			}
 		}
 	
+	
 		for (int j = 0; (unsigned)j < hotDays.size(); j++) { // add the values from the vectors to histograms
-			/*bothHist->Fill(hotDays.at(j));
-			bothHist->Fill(coldDays.at(j));*/
 			hotHist->Fill(hotDays.at(j));
 			if (coldDays.at(j) < 200){ // add the values for days in the beginning of the year to a seperate vector for fitting
 				coldHistEarly->Fill(coldDays.at(j));
@@ -175,16 +170,6 @@ class tempTrender {
 			
 		}
 		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 900, 600); // Create canvas for plot
-		
-		/*bothHist->SetLineColor(2);
-		bothHist->SetFillColor(2);
-		bothHist->Draw();
-		
-		TF1* fitHot = new TF1("fitFuncHot", "gaus", 1, 367);
-		fitHot->SetParameter(5, 200);
-		fitHot->SetLineColor(1);
-		fitHot->SetLineStyle(1);
-		bothHist->Fit(fitHot, "QLL");*/
 		
 		hotHist->SetLineColor(2);
 		hotHist->SetFillColor(2);
@@ -223,20 +208,17 @@ class tempTrender {
 		
 		
 		//Print mean and uncertainty
-		cout << "Cold (early): " << endl;
-		cout << "Mean is " << fitColdEarly->GetParameter(1) << endl;
+		cout << "Cold: " << endl;
+		cout << "The mean is " << fitColdEarly->GetParameter(1) << endl;
 		cout << "Its uncertainty is " << fitColdEarly->GetParError(1) << endl << endl;
 		
-		cout << "Cold (late): " << endl;
-		cout << "Mean is " << fitColdLate->GetParameter(1) << endl;
-		cout << "Its uncertainty is " << fitColdLate->GetParError(1) << endl << endl;
-		
 		cout << "Hot: " << endl;
-		cout << "Mean is " << fitHot->GetParameter(1) << endl;
+		cout << "The mean is " << fitHot->GetParameter(1) << endl;
 		cout << "Its uncertainty is " << fitHot->GetParError(1) << endl;
+		
+		hc->SaveAs("../report/img/hotColdDays.jpg");
 
-	}
-
+	}	
 		
 	
 	private:
