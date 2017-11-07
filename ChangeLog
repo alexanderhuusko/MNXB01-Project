@@ -3,7 +3,8 @@ Example:
 Date (yyyy-mm-dd) : user(s)
 Description of changes
 
-2017-11- : 
+2017-11-3 : Lucas Hellström
+Implemented analysis of data for measuring hottest and coldest day for every year. Also created plots for the histograms. 
 
 2017-11- : 
 
