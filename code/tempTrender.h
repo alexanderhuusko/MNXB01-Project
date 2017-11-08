@@ -1,3 +1,4 @@
+
 #ifndef TEMPTRENDER_H
 #define TEMPTRENDER_H
 
@@ -10,14 +11,17 @@
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
+#include "TGraph.h"
+#include "TCanvas.h"
+#include "TH1.h"
 
-using namespace std; 
+  using namespace std;
 
 class tempTrender {
  public:
   tempTrender(string iniDataPath, int iniStartingLine); //Construct using the specified file
   ~tempTrender() {} //Destructor
-  
+
   
   void split(string stringToSplit, vector<string>& container, char delimiter){
     stringstream sts(stringToSplit);
@@ -82,58 +86,89 @@ class tempTrender {
     dataFile.close();
   }
   
-  
+
   void tempPerDay(){ //Make a histogram of the average temperature of each day of the year
     
     for (p=0;(unsigned)p < year.size()-1;){
-      //int l = 0;
+      //int mycounter = 1;   
       if (((year.at(p) % 4 == 0) && (year.at(p) % 100 != 0)) || (year.at(p) % 400 == 0) ){
-	cout<< "I do not want this shit year to many days! \n";
+	//cout<< "I do not want this shit year to many days! \n";
+	leap_year_counter ++;
 	p++;
       }
       
       else{
 	//while (year.at(p) == year.at(p+1)){
 	//cout<< day.at(p)<< endl;
-	  mycounter = 1;
-	  if(day.at(p) == day.at(p+1)){
-	    do{
-	      tempday += temperature.at(p);
-	      // cout<<mycounter<< endl;
-	    mycounter++;
-	    p++;
-	    }while(day.at(p) == day.at(p+1));
-	    
-	  
-	  
-	  }
-	  else{
+	
+	if(day.at(p) == day.at(p+1)){
+	  do{
 	    tempday += temperature.at(p);
 	    mycounter++;
-	    tempavg = tempday /mycounter;
-	    cout<<"day = "<< day.at(p)<< endl;
-	    cout << "avg temp = "<<tempavg<< endl;
-	    tempday = 0;
-	    //cout<< mycounter << endl;
-	    //cout<< temperature.at(p)<< endl;
-	    //cout<<year.at(p)<< endl;
+	    //cout<<"c2 " <<mycounter<< endl;
 	    p++;
-	  }
-	  //if (day.at(p) == day.at(p+1)){
-	  //  cout<< temperature.at(p)<<", " <<temperature.at(p+1)<<endl;
-
-	  //}
+	  }while(day.at(p) == day.at(p+1));
+	  
+	  
+	  
+	}
+	else{
+	  tempday += temperature.at(p);
+	  mycounter +=1;
+	  tempavg = tempday /mycounter;
+	  //cout<<" c1 "<<mycounter<<endl;
+	  //cout<<"day = "<< day.at(p)<< endl;
+	  if(tempavg >40){
+	    cout << "avg temp = "<<tempavg<< endl;
+	    cout << mycounter<< endl;
 	    
-	  //}
-	//p++;
+	    cout<<year.at(p)<<" , "<< month.at(p)<< " , "<< day.at(p)<< endl;
+	  }
+	  mycounter = 0;
+	  tempday = 0;
+	  temp_avg.push_back(tempavg);
+	  //cout<< mycounter << endl;
+	  //cout<< temperature.at(p)<< endl;
+	  //cout<<year.at(p)<< endl;
+	  p++;
+	}
+	
       }
     }
-  }
-  
-  
-  
-  
     
+    int k=0;
+    int l;
+    
+    for ( l = year.front(); l <= (year.back()-15); l++){
+      for (int j = 0; j < 365; j++){
+	temp_every_day[j] += temp_avg.at(k);
+	
+	//if(temp_every_day[j] > 700){
+	//cout<< temp_every_day[j]<<endl;
+	k++;
+      }  
+    }
+    
+    for(int j = 0; j<365; j++){
+      temp_avg_all_days[j] = temp_every_day[j]/38;
+      //cout<<temp_avg_all_days[j]<< endl;
+      days[j]=j;
+    }
+    
+    cout<<temp_avg_all_days[364]<<endl;
+
+    TH1F h("h","example histogram",365,0.,365)
+    /* TGraph *gr  = new TGraph(365,days,temp_avg_all_days);
+    TCanvas *c1 = new TCanvas("c1","Graph Draw Options",200,10,600,400);
+    gr->GetStdDev();
+    gr->Draw();*/
+
+    
+
+  }
+
+  
+  
   int GetYear(int dataPoint){return year.at(dataPoint);}
   int GetMonth(int dataPoint){return month.at(dataPoint);}
   int GetDay(int dataPoint){return day.at(dataPoint);}
@@ -154,6 +189,10 @@ class tempTrender {
   vector<int> day;
   vector<int> hour;
   vector<float>sum_of_temp;
+  vector<float> temp_avg;
+  float temp_avg_all_days[365] = {};
+  float temp_every_day [365] = {};
+  float days [365] = {};
   int startingLine;
   int i;
   int k = 0;
@@ -162,11 +201,12 @@ class tempTrender {
   int l = 0;
   double tempday;
   double tempavg;
-//void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day
-//void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date
-
-//void hotCold(); //Make a histogram of the hottest and coldest day of the year
-//void tempPerYear(int yearToExtrapolate); //Make a histogram of average temperature per year, then fit and extrapolate to the given year
+  int leap_year_counter;
+  //void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day
+  //void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date
+  
+  //void hotCold(); //Make a histogram of the hottest and coldest day of the year
+  //void tempPerYear(int yearToExtrapolate); //Make a histogram of average temperature per year, then fit and extrapolate to the given year
 
 };
 
