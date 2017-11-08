@@ -115,8 +115,8 @@ class tempTrender {
 					tempVec.push_back(tempYearAvg);
 					tempYear=0;
 					count=0;
-					cout << tempVec.at(l) << endl;
-					cout << year.at(y) << endl;
+					//cout << tempVec.at(l) << endl; //funkar inte med denna 
+					//cout << year.at(y) << endl;
 					l++;
 				}else if (year.at(y) == year[year.size()-1] && month.at(y) == month[month.size()-1] && day.at(y) == day[day.size()-1]){
 					tempYearAvg = tempYear/count;
@@ -126,32 +126,66 @@ class tempTrender {
 					
 					
 					}
-				
-				
-		}		
+						
+		}
+		
+		
 		Tfile.close();
+		
+		/*-------------------EJ KLAR : Creating Histogram--------------------
 		TH1D* histo = new TH1D("temperature", "Temperature;Temperature[#circC];Entries", 
 			300, -40, 40);
-			histo->SetFillColor(kRed);
-			for (int k = 0; (unsigned)k<tempVec.size()-1; k++){
-			//histo->Fill(0);
+		histo->SetFillColor(kRed);
+		for (int k = 0; (unsigned)k < tempVec.size(); k++){
+			histo->Fill(tempVec.at(k));
 			}
-			//double mean = histo->GetMean();
-		cout << year.back() << endl;
-		cout << "hej" << endl;
-		
-	
-		
-		//
-		//cout << tempVec.size() << endl;
-		/*for (int k = 0; (unsigned)k<tempVec.size(); k++){
-			//histo->Fill(tempVec.at(k));
-			}*/
-		/*double mean = histo->GetMean(); 
+		double mean = histo->GetMean(); 
 		double stdev = histo->GetRMS(); 
 		TCanvas* can = new TCanvas(); 
-		histo->Draw(); */
-
+		histo->Draw(); 	
+		---------------Creating Histogram-----------------*/ 
+		
+		
+		/*---------------------Mean Temperature------------------*/
+		float meanT = 0; 	
+		
+		//for loop for calculating the sum ttt of all temperatures in tempVec 
+		for(int tt = 0; (unsigned)tt < tempVec.size(); tt++){
+			meanT += tempVec.at(tt);  
+			count++;  
+			}
+		
+		//dividing the sum by the amount of iterations to get the mean value ttt	
+		meanT /= count;
+		cout << "The mean temperature for march third for all years is: " << meanT << " degrees celcius."<< endl;
+		/*----------------Mean Temperature-----------------*/
+		
+		
+		/*---------------EJ KLAR : Standard Deviation-------------*/
+		float diffT = 0; 
+		float kvd; 
+		vector <float> kvdV; 
+		float meanKv = 0; 
+		float sigma; 
+		
+		for(int s = 0; (unsigned)s < tempVec.size(); s++){
+			diffT = tempVec.at(s) - meanT;
+			kvd = pow(diffT,2);
+			kvdV.push_back(kvd);
+			
+			//cout << kvdV[s] << endl; 
+			}
+			
+		for(int r = 0; (unsigned)r < kvdV.size(); r++){
+			meanKv += kvdV.at(r); 
+			count++; 
+			}
+			
+		meanKv /= count; 
+		sigma = TMath::Sqrt(meanKv); 
+		cout << "The standard deviation is: " << sigma << endl;	
+		/*----------------Standard Deviation-----------*/
+		
 		
 	}
 		
