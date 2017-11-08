@@ -136,7 +136,7 @@ class tempTrender {
 			}
 		}
 	}
-}
+
 
 	void hotCold() {
 		int currentYear = year.at(0); // Set starting values for year, month and day
@@ -242,6 +242,7 @@ class tempTrender {
 
 
 	}	
+
 		
 
 	private:
