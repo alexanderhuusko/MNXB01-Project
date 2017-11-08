@@ -3,12 +3,16 @@ Example:
 Date (yyyy-mm-dd) : user(s)
 Description of changes
 
+2017-11-2 : Alexander Huusko
+Implemented data read-in system and vectors for year, month, day, temperature and date [year]. Prepared reading in the data from each .csv city data file.
+
 2017-11-3 : Lucas Hellström
 Implemented analysis of data for measuring hottest and coldest day for every year. Also created plots for the histograms. 
 
-2017-11- : Lucas Hellström
+2017-11-7 : Lucas Hellström
 Implemented guassian fit
 
-2017-11- : 
+2017-11-8 : Alexander Huusko
+Implemented code for comparisng the highest temperature of each year between all cities.
 
 2017-11- : 
