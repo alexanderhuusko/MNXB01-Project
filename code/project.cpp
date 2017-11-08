@@ -211,8 +211,4 @@ void project(int choice) {
 		case 4 : cout << "Alexanders arbete" << endl;
 	}
 
-	cityDeviation(lulea, karlstad, boras, falsterbo, falun, lund, soderarm, umea, visby);
-
-	lund.hotCold();
-
 }
