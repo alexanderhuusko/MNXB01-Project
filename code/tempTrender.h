@@ -23,7 +23,9 @@ class tempTrender {
 	public:
 	tempTrender(string iniDataPath, int iniStartingLine); //Construct using the specified file
 	~tempTrender() {} //Destructor
-		
+	
+	vector<float> hottestTempVector;
+	vector<float> yearVector;	
 		
 	void split(string stringToSplit, vector<string>& container, char delimiter){
 		stringstream sts(stringToSplit);
@@ -109,13 +111,33 @@ class tempTrender {
 		
 		dataFile.close();
 	}
-	
+		
+	int GetYear(int dataPoint){return year.at(dataPoint);}
 	int GetMonth(int dataPoint){return month.at(dataPoint);}
 	int GetDay(int dataPoint){return day.at(dataPoint);}
 	int GetHour(int dataPoint){return hour.at(dataPoint);}
 	float GetTemperature(int dataPoint){return temperature.at(dataPoint);}
 	double GetDate(int dataPoint){return decimalYear.at(dataPoint);}
 	
+	void HottestDay(){
+	
+		int currentYear = year.at(0);
+		float hottestTemp = 0;
+		for (int vectorPosition = 0; (unsigned)vectorPosition < (year.size() - 1); vectorPosition++) {
+			if(temperature.at(vectorPosition) > hottestTemp){
+				hottestTemp = temperature.at(vectorPosition);
+			}
+			
+			if(currentYear != year.at(vectorPosition+1)){
+				hottestTempVector.push_back(hottestTemp);
+				yearVector.push_back(currentYear);
+				currentYear = year.at(vectorPosition+1);
+				hottestTemp = 0;
+			}
+		}
+	}
+}
+
 	void hotCold() {
 		int currentYear = year.at(0); // Set starting values for year, month and day
 		int currentMonth = month.at(0);
@@ -218,9 +240,10 @@ class tempTrender {
 		
 		hc->SaveAs("../report/img/hotColdDays.jpg");
 
+
 	}	
 		
-	
+
 	private:
 	
 	string dataPath;
