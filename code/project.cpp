@@ -146,6 +146,7 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 		legendary->Draw();   
 	   
 	}
+}
 	
 
 void hotCold(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras, tempTrender& falsterbo, tempTrender& falun, tempTrender& lund, tempTrender& soderarm, tempTrender& umea, tempTrender& visby){
