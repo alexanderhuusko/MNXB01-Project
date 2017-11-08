@@ -148,15 +148,12 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 	}
 	
 
-	
-   //TGraph * luleaGraph = new TGraph(n, x, y);
-   //luleaGraph ->SetLineColor(2);
-   //4 blå
-   //1 svart
-   //luleaGraph ->Draw("AC+");
-	
+void hotCold(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras, tempTrender& falsterbo, tempTrender& falun, tempTrender& lund, tempTrender& soderarm, tempTrender& umea, tempTrender& visby){
+	lund.hotCold();
 }
-void project() {
+
+void project(int choice) {
+
 	string dataPathLulea = "../datasets/smhi-opendata_Lulea.csv"; 
 	int startingLineLulea = 11;
 	string dataPathKarlstad = "../datasets/smhi-opendata_Karlstad.csv";
@@ -203,6 +200,15 @@ void project() {
 	tempTrender visby(dataPathVisby, startingLineVisby);
 	visby.readDataFile();
 	
+	switch(choice){
+		case 1 : cout << "Lisas arbete" << endl;
+				 break;
+		case 2 : cout << "Davids arbete" << endl;
+				 break;
+		case 3 : hotCold(lulea, karlstad, boras, falsterbo, falun, lund, soderarm, umea, visby);
+				 break;
+		case 4 : cout << "Alexanders arbete" << endl;
+	}
 
 	cityDeviation(lulea, karlstad, boras, falsterbo, falun, lund, soderarm, umea, visby);
 
