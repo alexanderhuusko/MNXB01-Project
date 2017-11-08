@@ -9,9 +9,8 @@
 
 using namespace std; 
 void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras, tempTrender& falsterbo, tempTrender& falun, tempTrender& lund, tempTrender& soderarm, tempTrender& umea, tempTrender& visby){
-	TCanvas * avgTempCanvas = new TCanvas();
-	TLegend* legendary = new TLegend(0.1, 0.7, 0.44, 0.9);
-	
+	TCanvas * avgTempCanvas = new TCanvas("aT", "Highest temperature per year, all cities", 900, 600);
+	TLegend* legendary = new TLegend(0.9, 0.68, 0.98, 0.98);
 	lulea.HottestDay();
 	karlstad.HottestDay();
 	boras.HottestDay();
@@ -77,19 +76,21 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				luleaGraph->SetMarkerSize(1);
 				luleaGraph->SetName("Lulea");
 				luleaGraph ->Draw("APL");
-				legendary->AddEntry("luleaGraph","Lulea", "lp");
+				legendary->AddEntry(luleaGraph,"Lulea", "lp");
+				luleaGraph->SetMinimum(17);
+				luleaGraph->SetMaximum(34);
 				break;
 			}
 		   
 			case(1): {
 				TGraph * karlstadGraph = new TGraph(n, x, y);
-				karlstadGraph->SetLineColor(3);
+				karlstadGraph->SetLineColor(38);
 				karlstadGraph->SetLineWidth(1);
 				karlstadGraph->SetMarkerStyle(8);
-				karlstadGraph->SetMarkerColor(3);
+				karlstadGraph->SetMarkerColor(38);
 				karlstadGraph->SetName("Karlstad");
 				karlstadGraph ->Draw("PL same");
-				legendary->AddEntry("karlstadGraph","Karlstad", "PL");
+				legendary->AddEntry(karlstadGraph,"Karlstad", "PL");
 			   break;
 				break;
 			}
@@ -102,7 +103,7 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				borasGraph->SetMarkerColor(4);
 				borasGraph->SetName("boras");
 				borasGraph ->Draw("PL same");
-				legendary->AddEntry("borasGraph","boras", "PL");
+				legendary->AddEntry(borasGraph,"boras", "PL");
 				break;
 			}
 			
@@ -114,7 +115,7 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				falsterboGraph->SetMarkerColor(30);
 				falsterboGraph->SetName("Falsterbo");
 				falsterboGraph->Draw("PL same");
-				legendary->AddEntry("falsterboGraph","Falsterbo", "PL");
+				legendary->AddEntry(falsterboGraph,"Falsterbo", "PL");
 				break;
 			}
 				
@@ -126,7 +127,7 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				falunGraph->SetMarkerColor(6);
 				falunGraph->SetName("Falun");
 				falunGraph ->Draw("PL same");
-				legendary->AddEntry("falunGraph","Falun", "PL");
+				legendary->AddEntry(falunGraph,"Falun", "PL");
 				break;
 			}
 			
@@ -138,32 +139,31 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				lundGraph->SetMarkerColor(7);
 				lundGraph->SetName("Lund");
 				lundGraph->Draw("PL same");
-				legendary->AddEntry("lundGraph","Lund", "PL");
+				legendary->AddEntry(lundGraph,"Lund", "PL");
 				break;
 			}
 			
 			case(6): {
 				TGraph * soderarmGraph = new TGraph(n, x, y);
-				soderarmGraph->SetLineColor(28);
+				soderarmGraph->SetLineColor(8);
 				soderarmGraph->SetLineWidth(1);
 				soderarmGraph->SetMarkerStyle(8);
-				soderarmGraph->SetMarkerColor(28);
+				soderarmGraph->SetMarkerColor(8);
 				soderarmGraph->SetName("Soderarm");
 				soderarmGraph ->Draw("PL same");
-				legendary->AddEntry("soderarmGraph","Soderarm", "PL");
+				legendary->AddEntry(soderarmGraph,"Soderarm", "PL");
 				break;
 			}
 			
 			case(7): {
 				TGraph * umeaGraph = new TGraph(n, x, y);
 				umeaGraph ->SetLineColor(9);
-				umeaGraph->SetLineColor(28);
 				umeaGraph->SetLineWidth(1);
 				umeaGraph->SetMarkerStyle(8);
-				umeaGraph->SetMarkerColor(28);
+				umeaGraph->SetMarkerColor(9);
 				umeaGraph->SetName("Umea");
 				umeaGraph ->Draw("PL same");
-				legendary->AddEntry("umeaGraph","Umea", "PL");
+				legendary->AddEntry(umeaGraph,"Umea", "PL");
 				break;
 			}
 			
@@ -176,7 +176,9 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				visbyGraph->SetMarkerColor(28);
 				visbyGraph->SetName("Visby");
 				visbyGraph ->Draw("PL same");
-				legendary->AddEntry("visbyGraph","Visby", "PL");
+				legendary->AddEntry(visbyGraph,"Visby", "PL");
+				visbyGraph->SetMinimum(17);
+				visbyGraph->SetMaximum(34);
 				break;
 			}
 				
