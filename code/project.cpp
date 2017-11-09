@@ -79,6 +79,8 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				legendary->AddEntry(luleaGraph,"Lulea", "lp");
 				luleaGraph->SetMinimum(17);
 				luleaGraph->SetMaximum(34);
+				luleaGraph->GetXaxis()->SetTitle("Time [Year]");
+				luleaGraph->GetYaxis()->SetTitle("Temperature [#circC]");
 				break;
 			}
 		   
