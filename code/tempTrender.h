@@ -13,7 +13,9 @@
 #include <stdio.h>
 #include "TGraph.h"
 #include "TCanvas.h"
-#include "TH1.h"
+#include "TGraphErrors.h"
+#include "TAxis.h"
+//#include "TH1.h"
 
   using namespace std;
 
@@ -86,85 +88,84 @@ class tempTrender {
     dataFile.close();
   }
   
-
-  void tempPerDay(){ //Make a histogram of the average temperature of each day of the year
+  //Make a histogram of the average temperature of each day of the year
+  void tempPerDay(){ 
     
     for (p=0;(unsigned)p < year.size()-1;){
-      //int mycounter = 1;   
+      //Ignoring the leap years  
       if (((year.at(p) % 4 == 0) && (year.at(p) % 100 != 0)) || (year.at(p) % 400 == 0) ){
-	//cout<< "I do not want this shit year to many days! \n";
-	leap_year_counter ++;
 	p++;
       }
       
       else{
-	//while (year.at(p) == year.at(p+1)){
-	//cout<< day.at(p)<< endl;
-	
+	//sum up the temperatures if it is the same day.
 	if(day.at(p) == day.at(p+1)){
 	  do{
 	    tempday += temperature.at(p);
 	    mycounter++;
-	    //cout<<"c2 " <<mycounter<< endl;
 	    p++;
 	  }while(day.at(p) == day.at(p+1));
 	  
-	  
-	  
 	}
 	else{
+	  // The last day will not be included in the statement above thus add the last measurement
+	  // to the vector. The temp for the day is also calculated here.
 	  tempday += temperature.at(p);
 	  mycounter +=1;
 	  tempavg = tempday /mycounter;
-	  //cout<<" c1 "<<mycounter<<endl;
-	  //cout<<"day = "<< day.at(p)<< endl;
-	  if(tempavg >40){
-	    cout << "avg temp = "<<tempavg<< endl;
-	    cout << mycounter<< endl;
-	    
-	    cout<<year.at(p)<<" , "<< month.at(p)<< " , "<< day.at(p)<< endl;
-	  }
+	  
 	  mycounter = 0;
 	  tempday = 0;
 	  temp_avg.push_back(tempavg);
-	  //cout<< mycounter << endl;
-	  //cout<< temperature.at(p)<< endl;
-	  //cout<<year.at(p)<< endl;
+	  
 	  p++;
 	}
-	
       }
     }
     
-    int k=0;
-    int l;
     
-    for ( l = year.front(); l <= (year.back()-15); l++){
-      for (int j = 0; j < 365; j++){
-	temp_every_day[j] += temp_avg.at(k);
-	
-	//if(temp_every_day[j] > 700){
-	//cout<< temp_every_day[j]<<endl;
-	k++;
-      }  
+    //counting how many years are leap years
+    for ( l = year.front(); l <= (year.back()); l++){
+      if (((l % 4 == 0) && (l % 100 != 0)) || (l % 400 == 0) ){
+	leap_year_counter ++;
+      }
     }
     
+    // looping ove all years and all days of a year and add the same of the diffent year togther.
+    for ( l = year.front(); l <= (year.back()-leap_year_counter); l++){
+      for (int j = 0; j < 365; j++){
+	temp_every_day[j] += temp_avg.at(k);
+	k++;
+      }  
+      Nr_year++;
+    }
+    
+    //Taking the avarage of all the temperatures
     for(int j = 0; j<365; j++){
-      temp_avg_all_days[j] = temp_every_day[j]/38;
-      //cout<<temp_avg_all_days[j]<< endl;
+      temp_avg_all_days[j] = temp_every_day[j]/Nr_year;
       days[j]=j;
     }
     
-    cout<<temp_avg_all_days[364]<<endl;
-
-    TH1F h("h","example histogram",365,0.,365)
-    /* TGraph *gr  = new TGraph(365,days,temp_avg_all_days);
-    TCanvas *c1 = new TCanvas("c1","Graph Draw Options",200,10,600,400);
-    gr->GetStdDev();
-    gr->Draw();*/
-
+    // Doing the standard deviation calculation based on the formula.
+    for ( m = 0; m < 365; m++){
+      for (t = m; t< temp_avg.size(); t += 365){
+	std[m] +=pow( temp_avg[t]- temp_avg_all_days[m], 2)/Nr_year;
+	}
+      std[m]=sqrt(std[m]);
+    }
     
-
+    // Drawing the graph.
+    TGraph *gr  = new TGraphErrors(365,days,temp_avg_all_days, 0 ,std);
+    
+    gr->SetTitle("Avarage temperature all days and years");
+    gr->GetYaxis()->SetTitle("Temperature [C]");
+    gr->GetXaxis()->SetTitle("Days");
+    
+    TCanvas *c1 = new TCanvas("c1","Avarage temperature all days and years",200,10,800,365);
+    gr->Draw();
+    
+    
+    
   }
 
   
@@ -190,9 +191,11 @@ class tempTrender {
   vector<int> hour;
   vector<float>sum_of_temp;
   vector<float> temp_avg;
+  vector <float> temporary_vector;
   float temp_avg_all_days[365] = {};
   float temp_every_day [365] = {};
   float days [365] = {};
+  float std [365] = {};
   int startingLine;
   int i;
   int k = 0;
@@ -201,7 +204,11 @@ class tempTrender {
   int l = 0;
   double tempday;
   double tempavg;
-  int leap_year_counter;
+  int leap_year_counter = 1;
+  int Nr_year = 0;
+  int m;
+  int t;
+  
   //void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day
   //void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date
   
