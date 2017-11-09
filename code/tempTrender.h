@@ -145,12 +145,12 @@ class tempTrender {
 		float coldest = 100; // arbitrary number which is far above the coldest temperature
 		float hottest = 0; // arbitrary number with is far below the hottest temperature
 		
-		TH1D* hotHist = new TH1D("Hot", "Histogram of hottest days over all years; day; Counts",  // Histogram from hottest days
+		TH1D* hotHist = new TH1D("Hot", "Histogram of hottest days over all years; Day; Counts",  // Histogram from hottest days
 			366, 1, 366);
-		TH1D* coldHistEarly = new TH1D("ColdEarly", "Histogram of coldest days over all years; day; Counts",  // Histogram for coldest days in the beginning of the year
+		TH1D* coldHistEarly = new TH1D("ColdEarly", "Histogram of coldest days over all years; Day; Counts",  // Histogram for coldest days in the beginning of the year
 			366, 1, 366);
 			
-		TH1D* coldHistLate = new TH1D("ColdLate", "Histogram of coldest days over all years; day; Counts", // Histogram for coldest days in the end of the year
+		TH1D* coldHistLate = new TH1D("ColdLate", "Histogram of coldest days over all years; Day; Counts", // Histogram for coldest days in the end of the year
 			366, 1, 366);
 		
 		for (k = 0; (unsigned)k < (year.size()-1); k++) { 
@@ -191,7 +191,7 @@ class tempTrender {
 			}
 			
 		}
-		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 900, 600); // Create canvas for plot
+		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 1920, 1080); // Create canvas for plot
 		
 		hotHist->SetLineColor(2);
 		hotHist->SetFillColor(2);
