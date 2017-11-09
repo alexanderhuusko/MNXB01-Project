@@ -146,12 +146,12 @@ class tempTrender {
 		float hottest = 0; // arbitrary number with is far below the hottest temperature
 		
 		TH1D* hotHist = new TH1D("Hot", "Histogram of hottest days over all years; day; Counts",  // Histogram from hottest days
-			366, 1, 367);
+			366, 1, 366);
 		TH1D* coldHistEarly = new TH1D("ColdEarly", "Histogram of coldest days over all years; day; Counts",  // Histogram for coldest days in the beginning of the year
-			366, 1, 367);
+			366, 1, 366);
 			
 		TH1D* coldHistLate = new TH1D("ColdLate", "Histogram of coldest days over all years; day; Counts", // Histogram for coldest days in the end of the year
-			366, 1, 367);
+			366, 1, 366);
 		
 		for (k = 0; (unsigned)k < (year.size()-1); k++) { 
 			if (temperature.at(k) > hottest){ // if the temperature of a given day is higher than the previously highest temperature it will update the variables
@@ -166,7 +166,7 @@ class tempTrender {
 				coldestMonth = month.at(k);
 			}
 			
-			if (currentYear != year.at(k+1)){ // at the end of the year the hottest and coldest temperatures are pushed into two seperate vectors and coldest and hottest variables are reset
+			if (currentYear != year.at(k+1)){ 
 				currentYear = year.at(k+1);
 				currentMonth = month.at(k+1);
 				currentDay = day.at(k+1);
@@ -175,7 +175,7 @@ class tempTrender {
 				coldest = 100;
 				hottest = 0;
 				
-			} else if ( year.at(k) == year[year.size() - 1] && month.at(k) == month[month.size() - 1] && day.at(k) == day[day.size() - 1] ){ // if statements which saves the variables for the last year
+			} else if ( year.at(k) == year[year.size() - 1] && month.at(k) == month[month.size() - 1] && day.at(k) == day[day.size() - 1] ){ 
 				hotDays.push_back(convertMonthToDays(hottestMonth) + hottestDay);
 				coldDays.push_back(convertMonthToDays(coldestMonth) + coldestDay);
 			}
