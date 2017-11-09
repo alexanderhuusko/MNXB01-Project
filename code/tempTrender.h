@@ -40,6 +40,8 @@ class tempTrender {
 		double normalYear = 365.0000000000; //days
 		double leapYear = 366.0000000000; //days
 		double hourToDay = 24.0;
+		
+		//Compensating for extra day on leap years.
 		if((year.at(i) % 4 == 0) && (year.at(i) % 100 != 0)){
 			tempDate = hour.at(i) / (hourToDay * leapYear) + day.at(i)/leapYear + month.at(i)/12 + year.at(i);
 		}
@@ -52,7 +54,6 @@ class tempTrender {
 		else{
 			tempDate = hour.at(i) / (hourToDay * normalYear) + day.at(i)/normalYear + month.at(i)/12 + year.at(i);
 		}
-		//printf("%f\n", tempDate);
 
 		return tempDate;
 	}
@@ -79,11 +80,12 @@ class tempTrender {
 	void readDataFile(){
 		ifstream dataFile(dataPath.c_str());
 		
+		//Skipping lines without data
 		for(int j = 1; j < startingLine; j++){
 			getline(dataFile, stringDummy);
 		}
-		string segment;
 		
+		string segment;
 		while(getline(dataFile, segment))
 		{
 			vector<string> stringSeparationVector;
@@ -124,10 +126,13 @@ class tempTrender {
 		int currentYear = year.at(0);
 		float hottestTemp = 0;
 		for (int vectorPosition = 0; (unsigned)vectorPosition < (year.size() - 1); vectorPosition++) {
+			
+			//If the temperature of a given day is higher than the highest, replace it.
 			if(temperature.at(vectorPosition) > hottestTemp){
 				hottestTemp = temperature.at(vectorPosition);
 			}
 			
+			//If the next data point is part of a new year, store the highest temperature and year and reset hottest temperature.
 			if(currentYear != year.at(vectorPosition+1)){
 				hottestTempVector.push_back(hottestTemp);
 				yearVector.push_back(currentYear);

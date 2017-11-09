@@ -20,11 +20,11 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 	soderarm.HottestDay();
 	umea.HottestDay();
 	visby.HottestDay();
-	//https://root-forum.cern.ch/t/tlegend-color-assignments/13379/2
 	
 	tempTrender *cityPointer = &lulea;
 	for (int j = 0; j < 9; j++){
 		
+		//Using pointer in order to decrease length of code (avoiding 9 for loops for x-y read in)
 		switch(j) {
 		
 			case(0):
@@ -65,6 +65,7 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 			y[i] = cityPointer->hottestTempVector.at(i);
 		}
 		
+		//Plotting the results from the different cities in the same canvas with different colours.
 		switch(j) {
 		
 			case(0): {
@@ -184,13 +185,13 @@ void cityDeviation(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras
 				break;
 			}
 				
-		}
-		legendary->SetHeader ("City");
-		legendary->Draw();   
+		} 
 	   
 	}
-}
-	
+	//Adding legend to see which colour corresponds to which city.
+	legendary->SetHeader ("City");
+	legendary->Draw();  
+}	
 
 void hotCold(tempTrender& lulea, tempTrender& karlstad, tempTrender& boras, tempTrender& falsterbo, tempTrender& falun, tempTrender& lund, tempTrender& soderarm, tempTrender& umea, tempTrender& visby){
 	lund.hotCold();
