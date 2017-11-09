@@ -16,6 +16,7 @@
 #include <TStyle.h>  // style object
 #include <TMath.h>   // math functions
 #include <TCanvas.h> // canvas object
+#include <TLegend.h>
 	
 using namespace std; 
 
@@ -95,100 +96,131 @@ class tempTrender {
 	float GetTemperature(int dataPoint){return temperature.at(dataPoint);}
 	double GetDate(int dataPoint){return decimalYear.at(dataPoint);}
 	
-	
+	/*---------------------tempOnDay-----------------*/
 	void tempOnDay(int monthToCalculate, int dayToCalculate){		
 		
 		ofstream Tfile("tredjeMars.csv");
 		vector <int> yearVec; 
 		vector <float> tempVec;
+		
 		for (int y = 0; (unsigned)y < (year.size()-1); y++){
 			
+				// if we are at march third in loop:  								
 				if (month.at(y) == monthToCalculate && day.at(y) == dayToCalculate){  
-					//Tfile << year.at(y)<< " - "<< month.at(y)<< " - " << day.at(y)<< " - " << temperature.at(y) << endl;	
+					// put the corresponding year and temperatures in "tredjeMars" 
 					Tfile << year.at(y) << " - " << temperature.at(y) << endl;
+					// put the years in a vector yearVec 
 					yearVec.push_back(year.at(y)); 
+					// add the temperatures of same year  
 					tempYear += temperature.at(y);
+					//count interations for same year
 					count++;							
 				}
+				// if two consecutive years are not the same 
 				if (year.at(y) != year.at(y+1)){
+					// divide the temperature-sum (of first year) by number of iterations for that same year 
+					// -> gives average temperature (on march third) each year 
 					tempYearAvg = tempYear/count;
+					// put the average temperatures in vector tempVec 
 					tempVec.push_back(tempYearAvg);
 					tempYear=0;
 					count=0;
-					//cout << tempVec.at(l) << endl; //funkar inte med denna 
-					//cout << year.at(y) << endl;
-					l++;
-				}else if (year.at(y) == year[year.size()-1] && month.at(y) == month[month.size()-1] && day.at(y) == day[day.size()-1]){
+				}
+				// if we're at last element of vector 
+				else if (year.at(y) == year[year.size()-1] && month.at(y) == month[month.size()-1] && day.at(y) == day[day.size()-1]){
+					// also divide the sum to get the average temp 
+					// (this is because the orignal for loop doesn't go to last element, 
+					// it goes to the one before (year.size()-1) 
 					tempYearAvg = tempYear/count;
+					// put the average of this year in vector tempVec 
 					tempVec.push_back(tempYearAvg);
+					break; 					
 					
-					//cout << tempVec.at(l) << endl;
-					
-					
-					}
-						
+					}						
 		}
 		
+		/*for(int lol=0; (unsigned)lol<tempVec.size(); lol++){
+			cout << tempVec.at(lol) << endl; 
+			cout << lol << endl; 
+			}*/
 		
 		Tfile.close();
 		
-		/*-------------------EJ KLAR : Creating Histogram--------------------
-		TH1D* histo = new TH1D("temperature", "Temperature;Temperature[#circC];Entries", 
+		/*-------------------EJ KLAR : Creating Histogram--------------------*/
+		TH1D* histo = new TH1D("Temperature on 3/3", "Temperature on 3/3;Temperature[#circC];Entries", 
 			300, -40, 40);
-		histo->SetFillColor(kRed);
+		histo->SetFillColor(kBlue+1);
+		histo->SetLineColor(kBlue+1);
 		for (int k = 0; (unsigned)k < tempVec.size(); k++){
 			histo->Fill(tempVec.at(k));
 			}
 		double mean = histo->GetMean(); 
+		cout << "mean" << mean << endl; 
 		double stdev = histo->GetRMS(); 
+		cout << "st" << stdev << endl; 
 		TCanvas* can = new TCanvas(); 
 		histo->Draw(); 	
-		---------------Creating Histogram-----------------*/ 
+		
+		TLegend *leg = new TLegend(0.65, 0.75, 0.92, 0.92, "", "NDC");
+		leg->SetFillStyle(0); 
+		leg->SetBorderSize(0);
+		histo->SetMarkerStyle(20); 
+		histo->SetMarkerColor(kBlue+1);
+		histo->SetMarkerSize(2);
+		leg->AddEntry(histo,"","P");
+		leg->Draw();  
+		/*---------------Creating Histogram-----------------*/ 
 		
 		
 		/*---------------------Mean Temperature------------------*/
 		float meanT = 0; 	
+		int count1; 
 		
 		//for loop for calculating the sum ttt of all temperatures in tempVec 
 		for(int tt = 0; (unsigned)tt < tempVec.size(); tt++){
 			meanT += tempVec.at(tt);  
-			count++;  
+			count1++;  
+			//cout << count1 << endl; 
 			}
 		
-		//dividing the sum by the amount of iterations to get the mean value ttt	
-		meanT /= count;
+		//dividing the sum by the number of iterations to get the mean value meanT	
+		meanT /= count1;
 		cout << "The mean temperature for march third for all years is: " << meanT << " degrees celcius."<< endl;
 		/*----------------Mean Temperature-----------------*/
 		
 		
-		/*---------------EJ KLAR : Standard Deviation-------------*/
+		/*---------------Standard Deviation-------------*/
 		float diffT = 0; 
 		float kvd; 
 		vector <float> kvdV; 
 		float meanKv = 0; 
+		int count2; 
 		float sigma; 
 		
+		//for loop for calculating the difference squared between temperatures in tempVec and meanT 
+		//also, putting the (diff)^2 in new vector kvdV 
 		for(int s = 0; (unsigned)s < tempVec.size(); s++){
 			diffT = tempVec.at(s) - meanT;
 			kvd = pow(diffT,2);
 			kvdV.push_back(kvd);
-			
-			//cout << kvdV[s] << endl; 
 			}
-			
+		
+		//for loop for calculating the sum of all (diff)^2 in vector kvdV 	
 		for(int r = 0; (unsigned)r < kvdV.size(); r++){
 			meanKv += kvdV.at(r); 
-			count++; 
+			count2++; 
+			//cout << count2 << endl; 
 			}
-			
-		meanKv /= count; 
+		
+		//dividing sum with number of iterations and taking squ.root of that to get stndrd dev. 	
+		meanKv /= count2; 
 		sigma = TMath::Sqrt(meanKv); 
 		cout << "The standard deviation is: " << sigma << endl;	
 		/*----------------Standard Deviation-----------*/
 		
 		
 	}
-		
+	/*--------------------------tempOnDay-------------------*/	
 		
 		
 	
@@ -215,7 +247,6 @@ class tempTrender {
 	float tempYear;
 	int count;
 	float tempYearAvg;
-	int l;
 	
 	//void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day
 	//void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date

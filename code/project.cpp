@@ -14,10 +14,10 @@ void project() {
 	string dataPathFalsterbo = "../datasets/smhi-opendata_Falsterbo.csv";
 	int startingLineFalsterbo = 11;		
 	string dataPathFalun = "../datasets/smhi-opendata_Falun.csv";
-	int startingLineFalun = 13;				
+	int startingLineFalun = 13;	*/			
 	string dataPathLund = "../datasets/smhi-opendata_Lund.csv";
 	int startingLineLund = 13;
-	string dataPathSoderarm = "../datasets/smhi-opendata_Soderarm.csv";
+	/*string dataPathSoderarm = "../datasets/smhi-opendata_Soderarm.csv";
 	int startingLineSoderarm = 12;
 	string dataPathUmea = "../datasets/smhi-opendata_Umea.csv";
 	int startingLineUmea = 13;
@@ -37,12 +37,12 @@ void project() {
 	falsterbo.readDataFile();
 			
 	tempTrender falun(dataPathFalun, startingLineFalun);
-	falun.readDataFile();
+	falun.readDataFile();*/
 	
 	tempTrender lund(dataPathLund, startingLineLund);
 	lund.readDataFile();
 	
-	tempTrender soderarm(dataPathSoderarm, startingLineSoderarm);
+	/*tempTrender soderarm(dataPathSoderarm, startingLineSoderarm);
 	soderarm.readDataFile();
 		
 	tempTrender umea(dataPathUmea, startingLineUmea);
@@ -66,6 +66,7 @@ void project() {
 	cout << soderarm.GetDate(150) << endl;*/ 
 	
 	lulea.tempOnDay(3,3);   
+	lund.tempOnDay(3,3);
 	
 	
 }
