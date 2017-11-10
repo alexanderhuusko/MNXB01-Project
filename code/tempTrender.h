@@ -107,7 +107,7 @@ class tempTrender {
 			
 				// if we are at march third in loop:  								
 				if (month.at(y) == monthToCalculate && day.at(y) == dayToCalculate){  
-					// put the corresponding year and temperatures in "tredjeMars" 
+					// put the corresponding year and temperatures in "tredjeMars" (just for checking) 
 					Tfile << year.at(y) << " - " << temperature.at(y) << endl;
 					// put the years in a vector yearVec 
 					yearVec.push_back(year.at(y)); 
@@ -146,18 +146,20 @@ class tempTrender {
 		
 		Tfile.close();
 		
-		/*-------------------EJ KLAR : Creating Histogram--------------------*/
+		/*-------------------Creating Histogram--------------------*/ 
 		TH1D* histo = new TH1D("Temperature on 3/3", "Temperature on 3/3;Temperature[#circC];Entries", 
 			300, -40, 40);
-		histo->SetFillColor(kBlue+1);
-		histo->SetLineColor(kBlue+1);
+		histo->SetFillColor(kRed+1);
+		histo->SetLineColor(kRed+1);
 		for (int k = 0; (unsigned)k < tempVec.size(); k++){
 			histo->Fill(tempVec.at(k));
 			}
+			
 		double mean = histo->GetMean(); 
-		cout << "mean" << mean << endl; 
+		cout << "mean value from histogram: " << mean << endl; 
 		double stdev = histo->GetRMS(); 
-		cout << "st" << stdev << endl; 
+		cout << "standard deviation from histogram: " << stdev << endl; 
+		
 		TCanvas* can = new TCanvas(); 
 		histo->Draw(); 	
 		
@@ -165,7 +167,7 @@ class tempTrender {
 		leg->SetFillStyle(0); 
 		leg->SetBorderSize(0);
 		histo->SetMarkerStyle(20); 
-		histo->SetMarkerColor(kBlue+1);
+		histo->SetMarkerColor(kRed+1);
 		histo->SetMarkerSize(2);
 		leg->AddEntry(histo,"","P");
 		leg->Draw();  
@@ -185,7 +187,7 @@ class tempTrender {
 		
 		//dividing the sum by the number of iterations to get the mean value meanT	
 		meanT /= count1;
-		cout << "The mean temperature for march third for all years is: " << meanT << " degrees celcius."<< endl;
+		cout << "calculated mean value: " << meanT << endl;
 		/*----------------Mean Temperature-----------------*/
 		
 		
@@ -215,21 +217,13 @@ class tempTrender {
 		//dividing sum with number of iterations and taking squ.root of that to get stndrd dev. 	
 		meanKv /= count2; 
 		sigma = TMath::Sqrt(meanKv); 
-		cout << "The standard deviation is: " << sigma << endl;	
+		cout << "Calculated standard deviation: " << sigma << endl;	
 		/*----------------Standard Deviation-----------*/
 		
 		
 	}
 	/*--------------------------tempOnDay-------------------*/	
 		
-		
-	
-			
-		
-		
-	
-
-	
 	private:
 	
 	string dataPath;

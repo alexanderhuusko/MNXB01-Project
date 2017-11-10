@@ -66,7 +66,7 @@ void project() {
 	cout << soderarm.GetDate(150) << endl;*/ 
 	
 	lulea.tempOnDay(3,3);   
-	lund.tempOnDay(3,3);
+	//lund.tempOnDay(3,3);
 	
 	
 }
