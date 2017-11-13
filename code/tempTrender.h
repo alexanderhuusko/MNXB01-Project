@@ -133,28 +133,29 @@ class tempTrender {
 			
 				// if we are at march third in loop:  								
 				if (month.at(y) == monthToCalculate && day.at(y) == dayToCalculate){  
-					// put the corresponding year and temperatures in "tredjeMars" (just for checking) 
+					// put the corresponding year and temperature in "tredjeMars" (just for checking) 
 					Tfile << year.at(y) << " - " << temperature.at(y) << endl;
-					// put the years in a vector yearVec 
+					// put the year in a vector yearVec 
 					yearVec.push_back(year.at(y)); 
-					// add the temperatures of same year  
+					// add the temperature to variable tempYear  
 					tempYear += temperature.at(y);
-					//count interations for same year
+					//count interation number 
 					count++;							
 				}
 				// if two consecutive years are not the same 
 				if (year.at(y) != year.at(y+1)){
-					// divide the temperature-sum (of first year) by number of iterations for that same year 
+					// divide current tempYear by current iteration number
 					// -> gives average temperature (on march third) each year 
 					tempYearAvg = tempYear/count;
 					// put the average temperatures in vector tempVec 
 					tempVec.push_back(tempYearAvg);
+					// reset tempYear and count (in order to get one average temperature per year)
 					tempYear=0;
 					count=0;
 				}
 				// if we're at last element of vector 
 				else if (year.at(y) == year[year.size()-1] && month.at(y) == month[month.size()-1] && day.at(y) == day[day.size()-1]){
-					// also divide the sum to get the average temp 
+					// also divide tempYear to get the average temp 
 					// (this is because the orignal for loop doesn't go to last element, 
 					// it goes to the one before (year.size()-1) 
 					tempYearAvg = tempYear/count;
