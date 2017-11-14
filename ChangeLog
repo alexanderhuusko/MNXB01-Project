@@ -3,9 +3,9 @@ Example:
 Date (yyyy-mm-dd) : user(s)
 Description of changes
 
-2017-11- : 
+2017-11-06 : wrote code that produce a vector that contains all the avarage temperature for all days in the dataset
 
-2017-11- : 
+2017-11- 09: Everything in the code works and the code produces, a histogram which agrees with reality
 
 2017-11- : 
 
