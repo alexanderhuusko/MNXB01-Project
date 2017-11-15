@@ -20,17 +20,8 @@
 	vector (the data points contains no minutes or seconds and are thus not stored in vectors). Last step was to convert the temperature to a float and then store it in a vector. 
 	\\\\
 	The next step was to create a date vector which calculates the time in terms of year (in decimal) so that one can display all the data points in the same plot without having 
-	for example data point ``1951-06-11 6:00:00`` and data point ``1951-06-11 12:00:00'' having the same x-value.
-	
+	for example data point ``1951-06-11 6:00:00`` and data point ``1951-06-11 12:00:00'' having the same x-value. The code itself converts hours, days and months into equivalent 
+	amount of one year and adds it all together with the year and then stores the result in a vector. The code also checks if the current year is a leap year and then takes 
+	into consideration the extra day when converting things to years.
 
-	\vspace{2mm}
-	\begin{lstlisting}[frame=single] 
-for (k = 0; (unsigned)k < (year.size()-1); k++) { 
-	if (temperature.at(k) > hottest){ 
-		hottest = temperature.at(k);
-		hottestDay = day.at(k);
-		hottestMonth = month.at(k);
-	}
-}
-	\end{lstlisting}
 \end{document}
