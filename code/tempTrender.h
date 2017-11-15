@@ -16,6 +16,7 @@
 #include <TStyle.h>  // style object
 #include <TMath.h>   // math functions
 #include <TCanvas.h> // canvas object
+#include <TLegend.h>
 	
 using namespace std; 
 
@@ -191,7 +192,7 @@ class tempTrender {
 			}
 			
 		}
-		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 1920, 1080); // Create canvas for plot
+		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 800, 600); // Create canvas for plot
 		
 		hotHist->SetLineColor(2);
 		hotHist->SetFillColor(2);
@@ -227,6 +228,11 @@ class tempTrender {
 		fitColdLate->SetLineStyle(2);
 		fitColdLate->SetLineWidth(2);
 		coldHistLate->Fit(fitColdLate, "QLLM"); // fit the guassian to the values for the late coldest days
+		
+		TLegend* leg = new TLegend(0.75,0.8,0.95,0.95); // create a legend for the plot
+		leg->AddEntry(hotHist,"Warmest days","F");
+		leg->AddEntry(coldHistEarly,"Coldest days","F");
+		leg->Draw();
 		
 		
 		//Print mean and uncertainty
