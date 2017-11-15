@@ -1,6 +1,6 @@
 Code Structure (task : user)
-1. task : user
-2. task : user
-3. task : user
-4. task : user
-5. task : user
+1. Code to read data from csv files : Alexander Huusko
+2. Calculate the temperature of a given day : Lisa Vergara
+3. Calculate temperature for every day of the year : David Madsen
+4. Calculate the warmest and coldest day for every year : Lucas Hellström
+5. Calculate warmest day per year for all cities : Alexander Huusko

@@ -1,12 +1,25 @@
 We add major changes here (will also be written in big git commits).
 Example:
 Date (yyyy-mm-dd) : user(s)
+
 Description of changes
 
-2017-11-06 : wrote code that produce a vector that contains all the avarage temperature for all days in the dataset
+2017-11-02 : Alexander Huusko
+Implemented data read-in system and vectors for year, month, day, temperature and date [year]. Prepared reading in the data from each .csv city data file.
 
-2017-11- 09: Everything in the code works and the code produces, a histogram which agrees with reality
+2017-11-03 : Lucas Hellström
+Implemented analysis of data for measuring hottest and coldest day for every year. Also created plots for the histograms. 
 
-2017-11- : 
+2017-11-06 : David Madsen
+wrote code that produce a vector that contains all the avarage temperature for all days in the dataset
+
+2017-11-07 : Lucas Hellström
+Implemented guassian fit
+
+2017-11-08 : Alexander Huusko
+Implemented code for comparisng the highest temperature of each year between all cities.
+
+2017-11-09: David Madsen
+Everything in the code works and the code produces, a histogram which agrees with reality
 
 2017-11- : 
