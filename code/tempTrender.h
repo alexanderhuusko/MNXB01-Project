@@ -280,13 +280,13 @@ class tempTrender {
 		float coldest = 100; // arbitrary number which is far above the coldest temperature
 		float hottest = 0; // arbitrary number with is far below the hottest temperature
 		
-		TH1D* hotHist = new TH1D("Hot", "Histogram of hottest days over all years; day; Counts",  // Histogram from hottest days
-			366, 1, 367);
-		TH1D* coldHistEarly = new TH1D("ColdEarly", "Histogram of coldest days over all years; day; Counts",  // Histogram for coldest days in the beginning of the year
-			366, 1, 367);
+		TH1D* hotHist = new TH1D("Hot", "Histogram of hottest days over all years; Day; Counts",  // Histogram from hottest days
+			366, 1, 366);
+		TH1D* coldHistEarly = new TH1D("ColdEarly", "Histogram of coldest days over all years; Day; Counts",  // Histogram for coldest days in the beginning of the year
+			366, 1, 366);
 			
-		TH1D* coldHistLate = new TH1D("ColdLate", "Histogram of coldest days over all years; day; Counts", // Histogram for coldest days in the end of the year
-			366, 1, 367);
+		TH1D* coldHistLate = new TH1D("ColdLate", "Histogram of coldest days over all years; Day; Counts", // Histogram for coldest days in the end of the year
+			366, 1, 366);
 		
 		for (k = 0; (unsigned)k < (year.size()-1); k++) { 
 			if (temperature.at(k) > hottest){ // if the temperature of a given day is higher than the previously highest temperature it will update the variables
@@ -301,7 +301,7 @@ class tempTrender {
 				coldestMonth = month.at(k);
 			}
 			
-			if (currentYear != year.at(k+1)){ // at the end of the year the hottest and coldest temperatures are pushed into two seperate vectors and coldest and hottest variables are reset
+			if (currentYear != year.at(k+1)){ 
 				currentYear = year.at(k+1);
 				currentMonth = month.at(k+1);
 				currentDay = day.at(k+1);
@@ -310,7 +310,7 @@ class tempTrender {
 				coldest = 100;
 				hottest = 0;
 				
-			} else if ( year.at(k) == year[year.size() - 1] && month.at(k) == month[month.size() - 1] && day.at(k) == day[day.size() - 1] ){ // if statements which saves the variables for the last year
+			} else if ( year.at(k) == year[year.size() - 1] && month.at(k) == month[month.size() - 1] && day.at(k) == day[day.size() - 1] ){ 
 				hotDays.push_back(convertMonthToDays(hottestMonth) + hottestDay);
 				coldDays.push_back(convertMonthToDays(coldestMonth) + coldestDay);
 			}
@@ -326,7 +326,7 @@ class tempTrender {
 			}
 			
 		}
-		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 900, 600); // Create canvas for plot
+		TCanvas* hc = new TCanvas("hc", "Hot cold canvas", 800, 600); // Create canvas for plot
 		
 		hotHist->SetLineColor(2);
 		hotHist->SetFillColor(2);
@@ -362,6 +362,11 @@ class tempTrender {
 		fitColdLate->SetLineStyle(2);
 		fitColdLate->SetLineWidth(2);
 		coldHistLate->Fit(fitColdLate, "QLLM"); // fit the guassian to the values for the late coldest days
+		
+		TLegend* leg = new TLegend(0.75,0.8,0.95,0.95); // create a legend for the plot
+		leg->AddEntry(hotHist,"Warmest days","F");
+		leg->AddEntry(coldHistEarly,"Coldest days","F");
+		leg->Draw();
 		
 		
 		//Print mean and uncertainty
