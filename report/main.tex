@@ -5,6 +5,12 @@
 \usepackage{listings} 
 \lstset{language=C++}  
 \usepackage{subfiles}
+\usepackage[pdftex]{hyperref}
+\usepackage{float}
+\usepackage[margin=3cm]{geometry}
+\usepackage{subcaption}
+
+
 \graphicspath{{img/}{../img/}}
  
 \usepackage{blindtext}
@@ -20,10 +26,12 @@
  
 \maketitle
 
+\subfile{subfiles/dataread.tex}
+
+\subfile{subfiles/reportLV.tex}
  
 \subfile{subfiles/hotCold}
 
- 
 \subfile{subfiles/test}
  
 \end{document}

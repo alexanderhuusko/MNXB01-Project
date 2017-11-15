@@ -12,7 +12,12 @@
 	  \label{datastructure}
 	 
 	\end{figure}\noindent
-	The first couple of lines are 
+	The first couple of lines consists of information which is irrelevant for reading in, which is why a for loop was used in order to skip the first lines until it reaches 
+	the first data point, which can be identified by its ``year-month-day;hour:minute:second;temperature`` format.
+	\\\\
+	In order to obtain the information in each data point it was first split into three separate strings at each '';``. In the next step the ``year-month-day'' string was split 
+	further at each ``-'' and stored into separate vectors. The same was done to the ``hour:minute:second'' string for each ``:'' and the hour was stored in a 
+	vector (the data points contains no minutes or seconds and are thus not saved).
 	
 
 	\vspace{2mm}

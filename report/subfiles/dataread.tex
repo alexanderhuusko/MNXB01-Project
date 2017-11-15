@@ -17,7 +17,10 @@
 	\\\\
 	In order to obtain the information in each data point it was first split into three separate strings at each '';``. In the next step the ``year-month-day'' string was split 
 	further at each ``-'' and stored into separate vectors. The same was done to the ``hour:minute:second'' string for each ``:'' and the hour was stored in a 
-	vector (the data points contains no minutes or seconds and are thus not saved).
+	vector (the data points contains no minutes or seconds and are thus not stored in vectors). Last step was to convert the temperature to a float and then store it in a vector. 
+	\\\\
+	The next step was to create a date vector which calculates the time in terms of year (in decimal) so that one can display all the data points in the same plot without having 
+	for example data point ``1951-06-11 6:00:00`` and data point ``1951-06-11 12:00:00'' having the same x-value.
 	
 
 	\vspace{2mm}
