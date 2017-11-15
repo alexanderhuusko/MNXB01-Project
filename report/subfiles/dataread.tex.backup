@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+\section{Data read in system}
+	The first challenge part of the project was to create a data read in system in order to allow data analysis. The data files come in the form on .csv files which has
+	the data structure seen in Figure \ref{datastructure}.
+	\begin{figure}[!h]
+	  \centering
+	  \includegraphics[width = \textwidth]{datastructure.jpg}
+	  \caption{Data structure of the files used for analysis.}
+	  \label{datastructure}
+	 
+	\end{figure}\noindent
+	The first couple of lines are 
+	
+
+	\vspace{2mm}
+	\begin{lstlisting}[frame=single] 
+for (k = 0; (unsigned)k < (year.size()-1); k++) { 
+	if (temperature.at(k) > hottest){ 
+		hottest = temperature.at(k);
+		hottestDay = day.at(k);
+		hottestMonth = month.at(k);
+	}
+}
+	\end{lstlisting}
+\end{document}
