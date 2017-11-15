@@ -26,18 +26,12 @@
  
 \maketitle
 
-\clearpage
-
-\tableofcontents
-
-\clearpage
-
 \subfile{subfiles/dataread.tex}
 
 \subfile{subfiles/reportLV.tex}
  
 \subfile{subfiles/hotCold}
 
-\subfile{subfiles/highestTemp}
+\subfile{subfiles/test}
  
 \end{document}
