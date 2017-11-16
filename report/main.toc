@@ -1,5 +1,9 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Data read in system}{3}{section.1}
 \contentsline {section}{\numberline {2}The Temperature of a Given Day}{3}{section.2}
-\contentsline {section}{\numberline {3}The warmest and coldest days of the year}{4}{section.3}
-\contentsline {section}{\numberline {4}Highest temperature of the year}{6}{section.4}
+\contentsline {section}{\numberline {3}Average temperature of each day of the year}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Method}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Result and discussion}{5}{subsection.3.2}
+\contentsline {section}{\numberline {4}The warmest and coldest days of the year}{6}{section.4}
+\contentsline {section}{\numberline {5}Highest temperature of the year}{7}{section.5}
+\contentsfinish 
