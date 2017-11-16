@@ -13,3 +13,15 @@ ROOT 5.34/30 (heads/v5-34-00-patches@v5-34-28-57-gec27989, Apr 05 2016, 13:55:00
 
 
 Works for Lisa, Lucas and Alexanders work
+
+
+
+----------------------------------------------------------
+  | Welcome to ROOT 6.10/00                http://root.cern.ch |
+  |                               (c) 1995-2017, The ROOT Team |
+  | Built for linuxx8664gcc                                    |
+  | From tag v6-10-00, 13 June 2017                            |
+  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
+   ------------------------------------------------------------
+   
+ Works for Davids work
