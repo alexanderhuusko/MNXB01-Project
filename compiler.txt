@@ -1,0 +1,15 @@
+  *******************************************
+  *                                         *
+  *        W E L C O M E  to  R O O T       *
+  *                                         *
+  *   Version   5.34/30     23 April 2015   *
+  *                                         *
+  *  You are welcome to visit our Web site  *
+  *          http://root.cern.ch            *
+  *                                         *
+  *******************************************
+
+ROOT 5.34/30 (heads/v5-34-00-patches@v5-34-28-57-gec27989, Apr 05 2016, 13:55:00 on linux)
+
+
+Works for Lisa, Lucas and Alexanders work
