@@ -17,7 +17,9 @@
 #include <TMath.h>   // math functions
 #include <TCanvas.h> // canvas object
 #include <TLegend.h>
-	
+#include "TGraph.h" // for plotting the avarage temperature of each day of each year
+#include "TGraphErrors.h" // for plotting the std of the avarage temperature of each day of each year
+
 using namespace std; 
 
 class tempTrender {
@@ -382,7 +384,85 @@ class tempTrender {
 
 
 	}	
-	
+
+ void tempPerDay(){ 
+    
+    for (ps=0;(unsigned)ps < year.size()-1;){
+      //Ignoring the leap years  
+      if (((year.at(ps) % 4 == 0) && (year.at(ps) % 100 != 0)) || (year.at(ps) % 400 == 0) ){
+	ps++;
+      }
+      
+      else{
+	//sum up the temperatures if it is the same day.
+	if(day.at(ps) == day.at(ps+1)){
+	  do{
+	    tempday += temperature.at(ps);
+	    mycounters++;
+	    ps++;
+	  }while(day.at(ps) == day.at(ps+1));
+	  
+	}
+	else{
+	  // The last day will not be included in the statement above thus add the last measurement
+	  // to the vector. The temp for the day is also calculated here.
+	  tempday += temperature.at(ps);
+	  mycounters +=1;
+	  tempavg = tempday /mycounters;
+	  
+	  mycounters = 0;
+	  tempday = 0;
+	  temp_avg.push_back(tempavg);
+	  
+	  ps++;
+	}
+      }
+    }
+    
+    
+    //counting how many years are leap years
+    for ( ls = year.front(); ls <= (year.back()); ls++){
+      if (((ls % 4 == 0) && (ls % 100 != 0)) || (ls % 400 == 0) ){
+	leap_year_counters ++;
+      }
+    }
+    
+    // looping ove all years and all days of a year and add the same of the diffent year togther.
+    for ( ls = year.front(); ls <= (year.back()-leap_year_counters); ls++){
+      for (int js = 0; js < 365; js++){
+	temp_every_day[js] += temp_avg.at(ks);
+	ks++;
+      }  
+      Nr_years++;
+    }
+    
+    //Taking the avarage of all the temperatures
+    for(int js = 0; js<365; js++){
+      temp_avg_all_days[js] = temp_every_day[js]/Nr_years;
+      days[js]=js;
+    }
+    
+    // Doing the standard deviation calculation based on the formula.
+    for ( ms = 0; ms < 365; ms++){
+      for (ts = ms; ts< temp_avg.size(); ts += 365){
+	std[ms] +=pow( temp_avg[ts]- temp_avg_all_days[ms], 2)/Nr_years;
+	}
+      std[ms]=sqrt(std[ms]);
+    }
+    
+    // Drawing the graph.
+    TGraph *gr  = new TGraphErrors(365,days,temp_avg_all_days, 0 ,std);
+    
+    gr->SetTitle("Avarage temperature all days and years");
+    gr->GetYaxis()->SetTitle("Temperature [C]");
+    gr->GetXaxis()->SetTitle("Days");
+    
+    TCanvas *c1 = new TCanvas("c1","Avarage temperature all days and years",200,10,800,365);
+    gr->Draw();
+    
+    
+    
+  }		
 
 	private:
 	
@@ -409,6 +489,23 @@ class tempTrender {
 	vector<int> hotDays;
 	vector<int> coldDays;
 	int daysMonth;
+	vector<float>sum_of_temp;
+  	vector<float> temp_avg;
+  	vector <float> temporary_vector;
+  	float temp_avg_all_days[365] = {};
+  	float temp_every_day [365] = {};
+  	float days [365] = {};
+  	float std [365] = {};
+  	int ks	 = 0;
+  	int ps = 0;
+  	int mycounters= 0;
+  	int ls = 0;
+  	double tempday;
+  	double tempavg;
+  	int leap_year_counters = 1;
+  	int Nr_years = 0;
+  	int ms;
+  	int ts;
 	
 	//void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day
 	//void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date
@@ -419,3 +516,4 @@ class tempTrender {
 };
 
 #endif
+

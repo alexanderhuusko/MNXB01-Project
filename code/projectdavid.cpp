@@ -1,4 +1,4 @@
-#include "tempTrender.h"
+#include "tempTrenderdavid.h"
 #include <string>
 #include "TCanvas.h"
 #include "TH1.h"
@@ -252,7 +252,7 @@ void project(int choice) {
 	        //lund.tempOnDay(3,3);
 	        break;
 		}
-		case 2 : cout << "davids work" << endl	;
+		case 2 : lund.tempPerDay();
 			break;
 		case 3 : hotCold(lulea, karlstad, boras, falsterbo, falun, lund, soderarm, umea, visby);
 			break;
