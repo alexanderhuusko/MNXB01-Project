@@ -11,9 +11,15 @@
 \usepackage{subcaption}
 
 
+
+
+
 \graphicspath{{img/}{../img/}}
  
 \usepackage{blindtext}
+
+\begin{document}
+
 
 \title{MNXB01-project}
 \author{Alexander Huusko \\
@@ -22,15 +28,16 @@
 		Lucas Hellström}
 \date{ }
  
-\begin{document}
  
 \maketitle
-
+\thispagestyle{empty}
 \clearpage
 
 \tableofcontents
-
+\thispagestyle{empty}
 \clearpage
+
+
 
 \subfile{subfiles/dataread.tex}
 
@@ -39,5 +46,34 @@
 \subfile{subfiles/hotCold}
 
 \subfile{subfiles/highestTemp}
+
+\section{Conclusion}
+
+By analyzing data, a great deal of hidden information can be obtained. This could be 
+seen in this project, where a huge amount of temperatures were analyzed. Once the 
+first challenge of the project - and perhaps the most important one - was passed and the 
+data could be read, the actual analysis could begin. \\
+
+\noindent First two histograms were made, with 
+the datasets from Luleå and Lund, of March 3rd. From these histograms, the mean 
+temperatures of that day in the two cities were found to be $-8.37^\circ$C for Luleå and 
+$0.44^\circ$C for Lund. The average temperature of each day, also in Lund, was then calculated.
+The plotted results showed that the temperature starts low at the beginning of the year, 
+increases towards the middle of the year and then decreases again towards the end of it. 
+Thereafter, the warmest and coldest days in Lund 
+were searched for. A histogram was made and afterwards fitted with a gaussian. The mean
+for the warmest day was found to be 196 and for the coldest it was 24, meaning that the 
+warmest day in Lund is most likely to occur in June, while the coldest is most likely 
+to occur in January. 
+In the final part of this project, the highest temperature of the year for all cities, 
+was obtained. In the results all cities were plotted in the same (messy) graph. From this
+graph it can be seen that the highest temperatures climb and fall together. \\ 
+
+
+\noindent Although the results obtained in this project are all quite expected and not very 
+surprising, it is always good to be able to confirm ideas and perceptions. Moreover, finding 
+out what kind of information can be extracted with the right analysis tools and what the many
+possibilities for this are, is fascinating. 
+
  
 \end{document}
