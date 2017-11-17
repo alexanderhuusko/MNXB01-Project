@@ -7,4 +7,5 @@
 \contentsline {subsection}{\numberline {4.2}Result and discussion}{5}{subsection.4.2}
 \contentsline {section}{\numberline {5}The warmest and coldest days of the year}{6}{section.5}
 \contentsline {section}{\numberline {6}Highest temperature of the year}{7}{section.6}
+\contentsline {section}{\numberline {7}Conclusion}{8}{section.7}
 \contentsfinish 

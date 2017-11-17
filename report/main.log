@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.30)  16 NOV 2017 18:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.30)  17 NOV 2017 02:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -966,20 +966,20 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1011,7 +1011,7 @@ e
 ))
 \c@lstlisting=\count164
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring OFF on input line 39.
+Package hyperref Info: Link coloring OFF on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1021,9 +1021,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count165
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
-LaTeX Info: Redefining \nameref on input line 39.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
+LaTeX Info: Redefining \nameref on input line 35.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -1067,12 +1067,12 @@ LaTeX Info: Redefining \nameref on input line 39.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 42.
+LaTeX Font Info:    Try loading font information for U+msa on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 42.
+LaTeX Font Info:    Try loading font information for U+msb on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1086,7 +1086,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 (./subfiles/introduction.tex) (./subfiles/dataread.tex
-<img/datastructure.jpg, id=63, 386.94562pt x 264.99pt>
+<img/datastructure.jpg, id=68, 386.94562pt x 264.99pt>
 File: img/datastructure.jpg Graphic file (type jpg)
 
 <use img/datastructure.jpg>
@@ -1102,30 +1102,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--26
 
  []
 
-[3
-
- <./img/datastructure.jpg>]) (./subfiles/reportLV.tex
+) (./subfiles/reportLV.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
+[3
 
+ <./img/datastructure.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 9--15
 
  []
 
-<../Lulea.png, id=71, 698.61pt x 475.7775pt>
+<../Lulea.png, id=76, 698.61pt x 475.7775pt>
 File: ../Lulea.png Graphic file (type png)
  <use ../Lulea.png>
 Package pdftex.def Info: ../Lulea.png used on input line 20.
 (pdftex.def)             Requested size: 221.78923pt x 151.04678pt.
 
-<../Lund.png, id=72, 698.61pt x 475.7775pt>
+<../Lund.png, id=77, 698.61pt x 475.7775pt>
 File: ../Lund.png Graphic file (type png)
  <use ../Lund.png>
 Package pdftex.def Info: ../Lund.png used on input line 26.
 (pdftex.def)             Requested size: 221.78923pt x 151.04678pt.
- [4 <../Lulea.png> <../Lund.png>]) (./subfiles/main_david.tex
+)
+(./subfiles/main_david.tex
 Underfull \hbox (badness 10000) in paragraph at lines 6--11
 
  []
@@ -1135,13 +1136,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--11
 
  []
 
-<img/std_MNXB01.png, id=86, 597.23125pt x 117.43875pt>
+[4 <../Lulea.png> <../Lund.png>]
+<img/std_MNXB01.png, id=91, 597.23125pt x 117.43875pt>
 File: img/std_MNXB01.png Graphic file (type png)
 
 <use img/std_MNXB01.png>
 Package pdftex.def Info: img/std_MNXB01.png used on input line 17.
 (pdftex.def)             Requested size: 298.61488pt x 58.71922pt.
- <img/avg_temp.png, id=88, 1695.33376pt x 962.59625pt>
+ <img/avg_temp.png, id=93, 1695.33376pt x 962.59625pt>
 File: img/avg_temp.png Graphic file (type png)
 
 <use img/avg_temp.png>
@@ -1177,14 +1179,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-[6 <./img/avg_temp.png>] <img/hotColdDays.jpg, id=113, 798.985pt x 576.1525pt>
+[6 <./img/avg_temp.png>] <img/hotColdDays.jpg, id=118, 798.985pt x 576.1525pt>
 File: img/hotColdDays.jpg Graphic file (type jpg)
 
 <use img/hotColdDays.jpg>
 Package pdftex.def Info: img/hotColdDays.jpg used on input line 23.
 (pdftex.def)             Requested size: 310.50357pt x 223.90733pt.
 ) (./subfiles/highestTemp.tex
-<img/hottestdaysallcities.pdf, id=115, 569.12625pt x 268.00125pt>
+<img/hottestdaysallcities.pdf, id=120, 569.12625pt x 268.00125pt>
 File: img/hottestdaysallcities.pdf Graphic file (type pdf)
 
 <use img/hottestdaysallcities.pdf>
@@ -1200,25 +1202,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--22
 
  []
 
-[7 <./img/hotColdDays.jpg>]) [8 <./img/hottestdaysallcities.pdf, page is rotate
-d 90 degrees>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
+[7 <./img/hotColdDays.jpg>]) (./subfiles/conclusion.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--26
+
+ []
+
+) [8 <./img/hottestdaysallcities.pdf, page is rotated 90 degrees>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3472ECDB57D62D8EAF4F2438FBFC5A1C;510.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 61.
+(rerunfilecheck)             Checksum: AF8D8B560F268CA98227DF6B04F0B9DB;555.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 68.
  ) 
 Here is how much of TeX's memory you used:
- 20851 strings out of 493029
- 371944 string characters out of 6136234
- 560170 words of memory out of 5000000
- 23945 multiletter control sequences out of 15000+600000
+ 20856 strings out of 493029
+ 372022 string characters out of 6136234
+ 560117 words of memory out of 5000000
+ 23946 multiletter control sequences out of 15000+600000
  13393 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,78p,1021b,1487s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,78p,670b,1487s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1231,10 +1242,10 @@ amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
 >
-Output written on main.pdf (8 pages, 394347 bytes).
+Output written on main.pdf (8 pages, 396090 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 112 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 224 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 120 words of extra memory for PDF output out of 10000 (max. 10000000)
 
